@@ -37,15 +37,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.normalizeClientOptions = normalizeClientOptions;
 exports.normalizeClientOptionsWithAuth = normalizeClientOptionsWithAuth;
 const BearerAuthProvider_js_1 = require("./auth/BearerAuthProvider.js");
-const headers_js_1 = require("./core/headers.js");
 const core = __importStar(require("./core/index.js"));
 function normalizeClientOptions(options) {
-    const headers = (0, headers_js_1.mergeHeaders)({
-        "X-Fern-Language": "JavaScript",
-        "X-Fern-Runtime": core.RUNTIME.type,
-        "X-Fern-Runtime-Version": core.RUNTIME.version,
-    }, options === null || options === void 0 ? void 0 : options.headers);
-    return Object.assign(Object.assign({}, options), { logging: core.logging.createLogger(options === null || options === void 0 ? void 0 : options.logging), headers });
+    return Object.assign(Object.assign({}, options), { logging: core.logging.createLogger(options === null || options === void 0 ? void 0 : options.logging) });
 }
 function normalizeClientOptionsWithAuth(options) {
     var _a;

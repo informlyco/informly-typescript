@@ -9,16 +9,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { ContactsClient } from "./api/resources/contacts/client/Client.mjs";
-import { HealthClient } from "./api/resources/health/client/Client.mjs";
 import { normalizeClientOptionsWithAuth } from "./BaseClient.mjs";
 import * as core from "./core/index.mjs";
 export class InformlyApiClient {
-    constructor(options = {}) {
+    constructor(options) {
         this._options = normalizeClientOptionsWithAuth(options);
-    }
-    get health() {
-        var _a;
-        return ((_a = this._health) !== null && _a !== void 0 ? _a : (this._health = new HealthClient(this._options)));
     }
     get contacts() {
         var _a;

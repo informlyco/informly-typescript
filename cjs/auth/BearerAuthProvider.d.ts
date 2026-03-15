@@ -13,7 +13,7 @@ export declare namespace BearerAuthProvider {
     const AUTH_CONFIG_ERROR_MESSAGE: string;
     type Options = AuthOptions;
     type AuthOptions = {
-        [TOKEN_PARAM]?: core.Supplier<core.BearerToken>;
+        [TOKEN_PARAM]: core.Supplier<core.BearerToken>;
     };
     function createInstance(options: Options): core.AuthProvider;
 }

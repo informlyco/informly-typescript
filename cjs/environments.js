@@ -3,5 +3,5 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InformlyApiEnvironment = void 0;
 exports.InformlyApiEnvironment = {
-    Default: "http://localhost:4000/api/v1",
+    Default: "https://api.informly.com/v1",
 };

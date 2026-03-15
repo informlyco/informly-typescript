@@ -16,7 +16,7 @@ import { handleNonStatusCodeError } from "../../../../errors/handleNonStatusCode
 import * as errors from "../../../../errors/index.mjs";
 import * as InformlyApi from "../../../index.mjs";
 export class ContactsClient {
-    constructor(options = {}) {
+    constructor(options) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
     /**
@@ -47,7 +47,7 @@ export class ContactsClient {
                 method: "GET",
                 headers: _headers,
                 queryParameters: Object.assign(Object.assign({}, _queryParams), requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.queryParams),
-                timeoutMs: ((_f = (_d = requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) !== null && _d !== void 0 ? _d : (_e = this._options) === null || _e === void 0 ? void 0 : _e.timeoutInSeconds) !== null && _f !== void 0 ? _f : 60) * 1000,
+                timeoutMs: ((_f = (_d = requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) !== null && _d !== void 0 ? _d : (_e = this._options) === null || _e === void 0 ? void 0 : _e.timeoutInSeconds) !== null && _f !== void 0 ? _f : 30) * 1000,
                 maxRetries: (_g = requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.maxRetries) !== null && _g !== void 0 ? _g : (_h = this._options) === null || _h === void 0 ? void 0 : _h.maxRetries,
                 abortSignal: requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.abortSignal,
                 fetchFn: (_j = this._options) === null || _j === void 0 ? void 0 : _j.fetch,
@@ -100,7 +100,7 @@ export class ContactsClient {
                 queryParameters: requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.queryParams,
                 requestType: "json",
                 body: request,
-                timeoutMs: ((_f = (_d = requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) !== null && _d !== void 0 ? _d : (_e = this._options) === null || _e === void 0 ? void 0 : _e.timeoutInSeconds) !== null && _f !== void 0 ? _f : 60) * 1000,
+                timeoutMs: ((_f = (_d = requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) !== null && _d !== void 0 ? _d : (_e = this._options) === null || _e === void 0 ? void 0 : _e.timeoutInSeconds) !== null && _f !== void 0 ? _f : 30) * 1000,
                 maxRetries: (_g = requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.maxRetries) !== null && _g !== void 0 ? _g : (_h = this._options) === null || _h === void 0 ? void 0 : _h.maxRetries,
                 abortSignal: requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.abortSignal,
                 fetchFn: (_j = this._options) === null || _j === void 0 ? void 0 : _j.fetch,
@@ -154,7 +154,7 @@ export class ContactsClient {
                 method: "GET",
                 headers: _headers,
                 queryParameters: requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.queryParams,
-                timeoutMs: ((_f = (_d = requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) !== null && _d !== void 0 ? _d : (_e = this._options) === null || _e === void 0 ? void 0 : _e.timeoutInSeconds) !== null && _f !== void 0 ? _f : 60) * 1000,
+                timeoutMs: ((_f = (_d = requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) !== null && _d !== void 0 ? _d : (_e = this._options) === null || _e === void 0 ? void 0 : _e.timeoutInSeconds) !== null && _f !== void 0 ? _f : 30) * 1000,
                 maxRetries: (_g = requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.maxRetries) !== null && _g !== void 0 ? _g : (_h = this._options) === null || _h === void 0 ? void 0 : _h.maxRetries,
                 abortSignal: requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.abortSignal,
                 fetchFn: (_j = this._options) === null || _j === void 0 ? void 0 : _j.fetch,

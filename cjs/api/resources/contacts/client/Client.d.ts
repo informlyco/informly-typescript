@@ -9,7 +9,7 @@ export declare namespace ContactsClient {
 }
 export declare class ContactsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<ContactsClient.Options>;
-    constructor(options?: ContactsClient.Options);
+    constructor(options: ContactsClient.Options);
     /**
      * @param {InformlyApi.ListContactsRequest} request
      * @param {ContactsClient.RequestOptions} requestOptions - Request-specific configuration.

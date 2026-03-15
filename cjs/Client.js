@@ -45,16 +45,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InformlyApiClient = void 0;
 const Client_js_1 = require("./api/resources/contacts/client/Client.js");
-const Client_js_2 = require("./api/resources/health/client/Client.js");
 const BaseClient_js_1 = require("./BaseClient.js");
 const core = __importStar(require("./core/index.js"));
 class InformlyApiClient {
-    constructor(options = {}) {
+    constructor(options) {
         this._options = (0, BaseClient_js_1.normalizeClientOptionsWithAuth)(options);
-    }
-    get health() {
-        var _a;
-        return ((_a = this._health) !== null && _a !== void 0 ? _a : (this._health = new Client_js_2.HealthClient(this._options)));
     }
     get contacts() {
         var _a;

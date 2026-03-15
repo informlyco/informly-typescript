@@ -36,9 +36,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.health = exports.contacts = void 0;
+exports.contacts = void 0;
 __exportStar(require("./contacts/client/requests/index.js"), exports);
 exports.contacts = __importStar(require("./contacts/index.js"));
 __exportStar(require("./contacts/types/index.js"), exports);
-exports.health = __importStar(require("./health/index.js"));
-__exportStar(require("./health/types/index.js"), exports);
