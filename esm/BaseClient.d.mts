@@ -2,7 +2,7 @@ import { BearerAuthProvider } from "./auth/BearerAuthProvider.mjs";
 import * as core from "./core/index.mjs";
 import type * as environments from "./environments.mjs";
 export type BaseClientOptions = {
-    environment?: core.Supplier<environments.InformlyApiEnvironment | string>;
+    environment?: core.Supplier<environments.InformlyEnvironment | string>;
     /** Specify a custom URL to connect the client to. */
     baseUrl?: core.Supplier<string>;
     /** Additional headers to include in requests. */

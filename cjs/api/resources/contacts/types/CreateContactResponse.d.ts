@@ -1,4 +1,4 @@
-import type * as InformlyApi from "../../../index.js";
+import type * as Informly from "../../../index.js";
 export interface CreateContactResponse {
-    data: InformlyApi.Contact;
+    data: Informly.Contact;
 }

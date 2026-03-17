@@ -36,7 +36,7 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UnauthorizedError = void 0;
 const errors = __importStar(require("../../errors/index.js"));
-class UnauthorizedError extends errors.InformlyApiError {
+class UnauthorizedError extends errors.InformlyError {
     constructor(body, rawResponse) {
         super({
             message: "UnauthorizedError",

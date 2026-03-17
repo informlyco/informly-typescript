@@ -1,5 +1,5 @@
-import type * as core from "../core/index.js";
-export declare class InformlyApiError extends Error {
+import type * as core from "../core/index.mjs";
+export declare class InformlyError extends Error {
     readonly statusCode?: number;
     readonly body?: unknown;
     readonly rawResponse?: core.RawResponse;

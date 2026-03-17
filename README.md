@@ -1,12 +1,12 @@
 # Informly TypeScript Library
 
 [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=Informly%2FTypeScript)
-[![npm shield](https://img.shields.io/npm/v/%40informly%2Fsdk)](https://www.npmjs.com/package/@informly/sdk)
 
 The Informly TypeScript library provides convenient access to the Informly APIs from TypeScript.
 
 ## Table of Contents
 
+- [Documentation](#documentation)
 - [Reference](#reference)
 - [Usage](#usage)
 - [Request and Response Types](#request-and-response-types)
@@ -24,6 +24,10 @@ The Informly TypeScript library provides convenient access to the Informly APIs 
   - [Runtime Compatibility](#runtime-compatibility)
 - [Contributing](#contributing)
 
+## Documentation
+
+API reference documentation is available [here](https://docs.informly.com/docs/api-reference).
+
 ## Reference
 
 A full reference for this library is available [here](./reference.md).
@@ -33,9 +37,9 @@ A full reference for this library is available [here](./reference.md).
 Instantiate and use the client with the following:
 
 ```typescript
-import { InformlyApiClient } from "./src/Client";
+import { InformlyClient } from "./src/Client";
 
-const client = new InformlyApiClient({ token: "YOUR_TOKEN" });
+const client = new InformlyClient({ token: "YOUR_TOKEN" });
 await client.contacts.createContact();
 ```
 
@@ -45,9 +49,9 @@ The SDK exports all request and response types as TypeScript interfaces. Simply 
 following namespace:
 
 ```typescript
-import { InformlyApi } from "InformlyApi";
+import { Informly } from "Informly";
 
-const request: InformlyApi.ListContactsRequest = {
+const request: Informly.ListContactsRequest = {
     ...
 };
 ```
@@ -58,12 +62,12 @@ When the API returns a non-success status code (4xx or 5xx response), a subclass
 will be thrown.
 
 ```typescript
-import { InformlyApiError } from "InformlyApi";
+import { InformlyError } from "Informly";
 
 try {
     await client.contacts.createContact(...);
 } catch (err) {
-    if (err instanceof InformlyApiError) {
+    if (err instanceof InformlyError) {
         console.log(err.statusCode);
         console.log(err.message);
         console.log(err.body);
@@ -79,7 +83,7 @@ try {
 This SDK supports direct imports of subpackage clients, which allows JavaScript bundlers to tree-shake and include only the imported subpackage code. This results in much smaller bundle sizes.
 
 ```typescript
-import { ContactsClient } from 'InformlyApi/contacts';
+import { ContactsClient } from 'Informly/contacts';
 
 const client = new ContactsClient({...});
 ```
@@ -89,9 +93,9 @@ const client = new ContactsClient({...});
 If you would like to send additional headers as part of the request, use the `headers` request option.
 
 ```typescript
-import { InformlyApiClient } from "InformlyApi";
+import { InformlyClient } from "Informly";
 
-const client = new InformlyApiClient({
+const client = new InformlyClient({
     ...
     headers: {
         'X-Custom-Header': 'custom value'
@@ -176,9 +180,9 @@ console.log(rawResponse.headers['X-My-Header']);
 The SDK supports logging. You can configure the logger by passing in a `logging` object to the client options.
 
 ```typescript
-import { InformlyApiClient, logging } from "InformlyApi";
+import { InformlyClient, logging } from "Informly";
 
-const client = new InformlyApiClient({
+const client = new InformlyClient({
     ...
     logging: {
         level: logging.LogLevel.Debug, // defaults to logging.LogLevel.Info
@@ -274,9 +278,9 @@ The SDK provides a way for you to customize the underlying HTTP client / Fetch f
 unsupported environment, this provides a way for you to break glass and ensure the SDK works.
 
 ```typescript
-import { InformlyApiClient } from "InformlyApi";
+import { InformlyClient } from "Informly";
 
-const client = new InformlyApiClient({
+const client = new InformlyClient({
     ...
     fetcher: // provide your implementation here
 });

@@ -2,15 +2,15 @@ import { ContactsClient } from "./api/resources/contacts/client/Client.js";
 import type { BaseClientOptions, BaseRequestOptions } from "./BaseClient.js";
 import { type NormalizedClientOptionsWithAuth } from "./BaseClient.js";
 import * as core from "./core/index.js";
-export declare namespace InformlyApiClient {
+export declare namespace InformlyClient {
     type Options = BaseClientOptions;
     interface RequestOptions extends BaseRequestOptions {
     }
 }
-export declare class InformlyApiClient {
-    protected readonly _options: NormalizedClientOptionsWithAuth<InformlyApiClient.Options>;
+export declare class InformlyClient {
+    protected readonly _options: NormalizedClientOptionsWithAuth<InformlyClient.Options>;
     protected _contacts: ContactsClient | undefined;
-    constructor(options: InformlyApiClient.Options);
+    constructor(options: InformlyClient.Options);
     get contacts(): ContactsClient;
     /**
      * Make a passthrough request using the SDK's configured auth, retry, logging, etc.

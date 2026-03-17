@@ -43,11 +43,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.InformlyApiClient = void 0;
+exports.InformlyClient = void 0;
 const Client_js_1 = require("./api/resources/contacts/client/Client.js");
 const BaseClient_js_1 = require("./BaseClient.js");
 const core = __importStar(require("./core/index.js"));
-class InformlyApiClient {
+class InformlyClient {
     constructor(options) {
         this._options = (0, BaseClient_js_1.normalizeClientOptionsWithAuth)(options);
     }
@@ -80,4 +80,4 @@ class InformlyApiClient {
         });
     }
 }
-exports.InformlyApiClient = InformlyApiClient;
+exports.InformlyClient = InformlyClient;

@@ -50,20 +50,23 @@ const core = __importStar(require("../../../../core/index.js"));
 const environments = __importStar(require("../../../../environments.js"));
 const handleNonStatusCodeError_js_1 = require("../../../../errors/handleNonStatusCodeError.js");
 const errors = __importStar(require("../../../../errors/index.js"));
-const InformlyApi = __importStar(require("../../../index.js"));
+const Informly = __importStar(require("../../../index.js"));
 class ContactsClient {
     constructor(options) {
         this._options = (0, BaseClient_js_1.normalizeClientOptionsWithAuth)(options);
     }
     /**
-     * @param {InformlyApi.ListContactsRequest} request
+     * @param {Informly.ListContactsRequest} request
      * @param {ContactsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link InformlyApi.UnauthorizedError}
-     * @throws {@link InformlyApi.ForbiddenError}
+     * @throws {@link Informly.UnauthorizedError}
+     * @throws {@link Informly.ForbiddenError}
      *
      * @example
-     *     await client.contacts.listContacts()
+     *     await client.contacts.listContacts({
+     *         page: 1,
+     *         pageSize: 20
+     *     })
      */
     listContacts(request = {}, requestOptions) {
         return core.HttpResponsePromise.fromPromise(this.__listContacts(request, requestOptions));
@@ -79,7 +82,7 @@ class ContactsClient {
             const _authRequest = yield this._options.authProvider.getAuthRequest();
             const _headers = (0, headers_js_1.mergeHeaders)(_authRequest.headers, (_a = this._options) === null || _a === void 0 ? void 0 : _a.headers, requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.headers);
             const _response = yield core.fetcher({
-                url: core.url.join((_c = (_b = (yield core.Supplier.get(this._options.baseUrl))) !== null && _b !== void 0 ? _b : (yield core.Supplier.get(this._options.environment))) !== null && _c !== void 0 ? _c : environments.InformlyApiEnvironment.Default, "contacts"),
+                url: core.url.join((_c = (_b = (yield core.Supplier.get(this._options.baseUrl))) !== null && _b !== void 0 ? _b : (yield core.Supplier.get(this._options.environment))) !== null && _c !== void 0 ? _c : environments.InformlyEnvironment.Default, "contacts"),
                 method: "GET",
                 headers: _headers,
                 queryParameters: Object.assign(Object.assign({}, _queryParams), requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.queryParams),
@@ -95,11 +98,11 @@ class ContactsClient {
             if (_response.error.reason === "status-code") {
                 switch (_response.error.statusCode) {
                     case 401:
-                        throw new InformlyApi.UnauthorizedError(_response.error.body, _response.rawResponse);
+                        throw new Informly.UnauthorizedError(_response.error.body, _response.rawResponse);
                     case 403:
-                        throw new InformlyApi.ForbiddenError(_response.error.body, _response.rawResponse);
+                        throw new Informly.ForbiddenError(_response.error.body, _response.rawResponse);
                     default:
-                        throw new errors.InformlyApiError({
+                        throw new errors.InformlyError({
                             statusCode: _response.error.statusCode,
                             body: _response.error.body,
                             rawResponse: _response.rawResponse,
@@ -110,12 +113,12 @@ class ContactsClient {
         });
     }
     /**
-     * @param {InformlyApi.CreateContact} request
+     * @param {Informly.CreateContact} request
      * @param {ContactsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link InformlyApi.BadRequestError}
-     * @throws {@link InformlyApi.UnauthorizedError}
-     * @throws {@link InformlyApi.ForbiddenError}
+     * @throws {@link Informly.BadRequestError}
+     * @throws {@link Informly.UnauthorizedError}
+     * @throws {@link Informly.ForbiddenError}
      *
      * @example
      *     await client.contacts.createContact()
@@ -129,7 +132,7 @@ class ContactsClient {
             const _authRequest = yield this._options.authProvider.getAuthRequest();
             const _headers = (0, headers_js_1.mergeHeaders)(_authRequest.headers, (_a = this._options) === null || _a === void 0 ? void 0 : _a.headers, requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.headers);
             const _response = yield core.fetcher({
-                url: core.url.join((_c = (_b = (yield core.Supplier.get(this._options.baseUrl))) !== null && _b !== void 0 ? _b : (yield core.Supplier.get(this._options.environment))) !== null && _c !== void 0 ? _c : environments.InformlyApiEnvironment.Default, "contacts"),
+                url: core.url.join((_c = (_b = (yield core.Supplier.get(this._options.baseUrl))) !== null && _b !== void 0 ? _b : (yield core.Supplier.get(this._options.environment))) !== null && _c !== void 0 ? _c : environments.InformlyEnvironment.Default, "contacts"),
                 method: "POST",
                 headers: _headers,
                 contentType: "application/json",
@@ -148,13 +151,13 @@ class ContactsClient {
             if (_response.error.reason === "status-code") {
                 switch (_response.error.statusCode) {
                     case 400:
-                        throw new InformlyApi.BadRequestError(_response.error.body, _response.rawResponse);
+                        throw new Informly.BadRequestError(_response.error.body, _response.rawResponse);
                     case 401:
-                        throw new InformlyApi.UnauthorizedError(_response.error.body, _response.rawResponse);
+                        throw new Informly.UnauthorizedError(_response.error.body, _response.rawResponse);
                     case 403:
-                        throw new InformlyApi.ForbiddenError(_response.error.body, _response.rawResponse);
+                        throw new Informly.ForbiddenError(_response.error.body, _response.rawResponse);
                     default:
-                        throw new errors.InformlyApiError({
+                        throw new errors.InformlyError({
                             statusCode: _response.error.statusCode,
                             body: _response.error.body,
                             rawResponse: _response.rawResponse,
@@ -165,11 +168,11 @@ class ContactsClient {
         });
     }
     /**
-     * @param {InformlyApi.GetContactRequest} request
+     * @param {Informly.GetContactRequest} request
      * @param {ContactsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link InformlyApi.UnauthorizedError}
-     * @throws {@link InformlyApi.NotFoundError}
+     * @throws {@link Informly.UnauthorizedError}
+     * @throws {@link Informly.NotFoundError}
      *
      * @example
      *     await client.contacts.getContact({
@@ -186,7 +189,7 @@ class ContactsClient {
             const _authRequest = yield this._options.authProvider.getAuthRequest();
             const _headers = (0, headers_js_1.mergeHeaders)(_authRequest.headers, (_a = this._options) === null || _a === void 0 ? void 0 : _a.headers, requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.headers);
             const _response = yield core.fetcher({
-                url: core.url.join((_c = (_b = (yield core.Supplier.get(this._options.baseUrl))) !== null && _b !== void 0 ? _b : (yield core.Supplier.get(this._options.environment))) !== null && _c !== void 0 ? _c : environments.InformlyApiEnvironment.Default, `contacts/${core.url.encodePathParam(id)}`),
+                url: core.url.join((_c = (_b = (yield core.Supplier.get(this._options.baseUrl))) !== null && _b !== void 0 ? _b : (yield core.Supplier.get(this._options.environment))) !== null && _c !== void 0 ? _c : environments.InformlyEnvironment.Default, `contacts/${core.url.encodePathParam(id)}`),
                 method: "GET",
                 headers: _headers,
                 queryParameters: requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.queryParams,
@@ -202,11 +205,11 @@ class ContactsClient {
             if (_response.error.reason === "status-code") {
                 switch (_response.error.statusCode) {
                     case 401:
-                        throw new InformlyApi.UnauthorizedError(_response.error.body, _response.rawResponse);
+                        throw new Informly.UnauthorizedError(_response.error.body, _response.rawResponse);
                     case 404:
-                        throw new InformlyApi.NotFoundError(_response.error.body, _response.rawResponse);
+                        throw new Informly.NotFoundError(_response.error.body, _response.rawResponse);
                     default:
-                        throw new errors.InformlyApiError({
+                        throw new errors.InformlyError({
                             statusCode: _response.error.statusCode,
                             body: _response.error.body,
                             rawResponse: _response.rawResponse,

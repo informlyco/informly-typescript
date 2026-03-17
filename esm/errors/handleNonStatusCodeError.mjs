@@ -3,25 +3,25 @@ import * as errors from "./index.mjs";
 export function handleNonStatusCodeError(error, rawResponse, method, path) {
     switch (error.reason) {
         case "non-json":
-            throw new errors.InformlyApiError({
+            throw new errors.InformlyError({
                 statusCode: error.statusCode,
                 body: error.rawBody,
                 rawResponse: rawResponse,
             });
         case "body-is-null":
-            throw new errors.InformlyApiError({
+            throw new errors.InformlyError({
                 statusCode: error.statusCode,
                 rawResponse: rawResponse,
             });
         case "timeout":
-            throw new errors.InformlyApiTimeoutError(`Timeout exceeded when calling ${method} ${path}.`);
+            throw new errors.InformlyTimeoutError(`Timeout exceeded when calling ${method} ${path}.`);
         case "unknown":
-            throw new errors.InformlyApiError({
+            throw new errors.InformlyError({
                 message: error.errorMessage,
                 rawResponse: rawResponse,
             });
         default:
-            throw new errors.InformlyApiError({
+            throw new errors.InformlyError({
                 message: "Unknown error",
                 rawResponse: rawResponse,
             });

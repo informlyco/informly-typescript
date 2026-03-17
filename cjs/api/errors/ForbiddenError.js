@@ -36,7 +36,7 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ForbiddenError = void 0;
 const errors = __importStar(require("../../errors/index.js"));
-class ForbiddenError extends errors.InformlyApiError {
+class ForbiddenError extends errors.InformlyError {
     constructor(body, rawResponse) {
         super({
             message: "ForbiddenError",

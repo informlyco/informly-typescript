@@ -1,2 +1,2 @@
-export { InformlyApiError } from "./InformlyApiError.js";
-export { InformlyApiTimeoutError } from "./InformlyApiTimeoutError.js";
+export { InformlyError } from "./InformlyError.js";
+export { InformlyTimeoutError } from "./InformlyTimeoutError.js";

@@ -1,5 +1,5 @@
-import type * as InformlyApi from "../../../index.mjs";
+import type * as Informly from "../../../index.mjs";
 export interface ListContactsResponse {
-    data: InformlyApi.Contact[];
-    meta: InformlyApi.PaginationMeta;
+    data: Informly.Contact[];
+    meta: Informly.PaginationMeta;
 }

@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import { ContactsClient } from "./api/resources/contacts/client/Client.mjs";
 import { normalizeClientOptionsWithAuth } from "./BaseClient.mjs";
 import * as core from "./core/index.mjs";
-export class InformlyApiClient {
+export class InformlyClient {
     constructor(options) {
         this._options = normalizeClientOptionsWithAuth(options);
     }

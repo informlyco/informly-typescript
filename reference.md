@@ -1,6 +1,6 @@
 # Reference
 ## Contacts
-<details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">listContacts</a>({ ...params }) -> InformlyApi.ListContactsResponse</code></summary>
+<details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">listContacts</a>({ ...params }) -> Informly.ListContactsResponse</code></summary>
 <dl>
 <dd>
 
@@ -13,7 +13,10 @@
 <dd>
 
 ```typescript
-await client.contacts.listContacts();
+await client.contacts.listContacts({
+    page: 1,
+    pageSize: 20
+});
 
 ```
 </dd>
@@ -29,7 +32,7 @@ await client.contacts.listContacts();
 <dl>
 <dd>
 
-**request:** `InformlyApi.ListContactsRequest` 
+**request:** `Informly.ListContactsRequest` 
     
 </dd>
 </dl>
@@ -49,7 +52,7 @@ await client.contacts.listContacts();
 </dl>
 </details>
 
-<details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">createContact</a>({ ...params }) -> InformlyApi.CreateContactResponse</code></summary>
+<details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">createContact</a>({ ...params }) -> Informly.CreateContactResponse</code></summary>
 <dl>
 <dd>
 
@@ -78,7 +81,7 @@ await client.contacts.createContact();
 <dl>
 <dd>
 
-**request:** `InformlyApi.CreateContact` 
+**request:** `Informly.CreateContact` 
     
 </dd>
 </dl>
@@ -98,7 +101,7 @@ await client.contacts.createContact();
 </dl>
 </details>
 
-<details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">getContact</a>({ ...params }) -> InformlyApi.GetContactResponse</code></summary>
+<details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">getContact</a>({ ...params }) -> Informly.GetContactResponse</code></summary>
 <dl>
 <dd>
 
@@ -129,7 +132,7 @@ await client.contacts.getContact({
 <dl>
 <dd>
 
-**request:** `InformlyApi.GetContactRequest` 
+**request:** `Informly.GetContactRequest` 
     
 </dd>
 </dl>
