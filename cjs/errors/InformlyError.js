@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.InformlyError = void 0;
 const json_js_1 = require("../core/json.js");
 class InformlyError extends Error {
-    constructor({ message, statusCode, body, rawResponse, }) {
+    constructor({ message, statusCode, body, rawResponse, cause, }) {
         super(buildMessage({ message, statusCode, body }));
         Object.setPrototypeOf(this, new.target.prototype);
         if (Error.captureStackTrace) {
@@ -14,6 +14,9 @@ class InformlyError extends Error {
         this.statusCode = statusCode;
         this.body = body;
         this.rawResponse = rawResponse;
+        if (cause != null) {
+            this.cause = cause;
+        }
     }
 }
 exports.InformlyError = InformlyError;
