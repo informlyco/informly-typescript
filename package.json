@@ -11,6 +11,11 @@
     "rest",
     "typescript"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/informlyco/informly-typescript"
+  },
+  "homepage": "https://www.informly.co",
   "type": "commonjs",
   "main": "./cjs/index.js",
   "module": "./esm/index.mjs",

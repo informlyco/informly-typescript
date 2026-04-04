@@ -1,6 +1,7 @@
 # Informly TypeScript Library
 
 [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=Informly%2FTypeScript)
+[![npm](https://img.shields.io/npm/v/@informly/sdk)](https://www.npmjs.com/package/@informly/sdk)
 
 The Informly TypeScript library provides convenient access to the Informly APIs from TypeScript.
 
