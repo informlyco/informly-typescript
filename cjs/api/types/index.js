@@ -17,3 +17,4 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./Contact.js"), exports);
 __exportStar(require("./ErrorResponse.js"), exports);
 __exportStar(require("./PaginationMeta.js"), exports);
+__exportStar(require("./Segment.js"), exports);

@@ -1,4 +1,5 @@
 import { ContactsClient } from "./api/resources/contacts/client/Client.mjs";
+import { SegmentsClient } from "./api/resources/segments/client/Client.mjs";
 import type { BaseClientOptions, BaseRequestOptions } from "./BaseClient.mjs";
 import { type NormalizedClientOptionsWithAuth } from "./BaseClient.mjs";
 import * as core from "./core/index.mjs";
@@ -10,8 +11,10 @@ export declare namespace InformlyClient {
 export declare class InformlyClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<InformlyClient.Options>;
     protected _contacts: ContactsClient | undefined;
+    protected _segments: SegmentsClient | undefined;
     constructor(options: InformlyClient.Options);
     get contacts(): ContactsClient;
+    get segments(): SegmentsClient;
     /**
      * Make a passthrough request using the SDK's configured auth, retry, logging, etc.
      * This is useful for making requests to endpoints not yet supported in the SDK.

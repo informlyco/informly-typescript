@@ -8,6 +8,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 import { normalizeClientOptionsWithAuth } from "../../../../BaseClient.mjs";
 import { mergeHeaders } from "../../../../core/headers.mjs";
 import * as core from "../../../../core/index.mjs";
@@ -77,6 +88,8 @@ export class ContactsClient {
         });
     }
     /**
+     * Creates a new contact or updates an existing one if a contact with the same email or phone already exists. Optionally assigns segments and redeems a referral code.
+     *
      * @param {Informly.CreateContact} request
      * @param {ContactsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -132,6 +145,60 @@ export class ContactsClient {
         });
     }
     /**
+     * @param {Informly.DeleteContacts} request
+     * @param {ContactsClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Informly.UnauthorizedError}
+     * @throws {@link Informly.ForbiddenError}
+     *
+     * @example
+     *     await client.contacts.deleteContacts({
+     *         ids: ["ids"]
+     *     })
+     */
+    deleteContacts(request, requestOptions) {
+        return core.HttpResponsePromise.fromPromise(this.__deleteContacts(request, requestOptions));
+    }
+    __deleteContacts(request, requestOptions) {
+        return __awaiter(this, void 0, void 0, function* () {
+            var _a, _b, _c, _d, _e, _f, _g, _h, _j;
+            const _authRequest = yield this._options.authProvider.getAuthRequest();
+            const _headers = mergeHeaders(_authRequest.headers, (_a = this._options) === null || _a === void 0 ? void 0 : _a.headers, requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.headers);
+            const _response = yield core.fetcher({
+                url: core.url.join((_c = (_b = (yield core.Supplier.get(this._options.baseUrl))) !== null && _b !== void 0 ? _b : (yield core.Supplier.get(this._options.environment))) !== null && _c !== void 0 ? _c : environments.InformlyEnvironment.Default, "contacts"),
+                method: "DELETE",
+                headers: _headers,
+                contentType: "application/json",
+                queryParameters: requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.queryParams,
+                requestType: "json",
+                body: request,
+                timeoutMs: ((_f = (_d = requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) !== null && _d !== void 0 ? _d : (_e = this._options) === null || _e === void 0 ? void 0 : _e.timeoutInSeconds) !== null && _f !== void 0 ? _f : 30) * 1000,
+                maxRetries: (_g = requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.maxRetries) !== null && _g !== void 0 ? _g : (_h = this._options) === null || _h === void 0 ? void 0 : _h.maxRetries,
+                abortSignal: requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.abortSignal,
+                fetchFn: (_j = this._options) === null || _j === void 0 ? void 0 : _j.fetch,
+                logging: this._options.logging,
+            });
+            if (_response.ok) {
+                return { data: _response.body, rawResponse: _response.rawResponse };
+            }
+            if (_response.error.reason === "status-code") {
+                switch (_response.error.statusCode) {
+                    case 401:
+                        throw new Informly.UnauthorizedError(_response.error.body, _response.rawResponse);
+                    case 403:
+                        throw new Informly.ForbiddenError(_response.error.body, _response.rawResponse);
+                    default:
+                        throw new errors.InformlyError({
+                            statusCode: _response.error.statusCode,
+                            body: _response.error.body,
+                            rawResponse: _response.rawResponse,
+                        });
+                }
+            }
+            return handleNonStatusCodeError(_response.error, _response.rawResponse, "DELETE", "/contacts");
+        });
+    }
+    /**
      * @param {Informly.GetContactRequest} request
      * @param {ContactsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -181,6 +248,118 @@ export class ContactsClient {
                 }
             }
             return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/contacts/{id}");
+        });
+    }
+    /**
+     * Updates an existing contact's fields. If segmentIds is provided, it replaces all existing segment assignments.
+     *
+     * @param {Informly.UpdateContact} request
+     * @param {ContactsClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Informly.BadRequestError}
+     * @throws {@link Informly.UnauthorizedError}
+     * @throws {@link Informly.NotFoundError}
+     *
+     * @example
+     *     await client.contacts.updateContact({
+     *         id: "id"
+     *     })
+     */
+    updateContact(request, requestOptions) {
+        return core.HttpResponsePromise.fromPromise(this.__updateContact(request, requestOptions));
+    }
+    __updateContact(request, requestOptions) {
+        return __awaiter(this, void 0, void 0, function* () {
+            var _a, _b, _c, _d, _e, _f, _g, _h, _j;
+            const { id } = request, _body = __rest(request, ["id"]);
+            const _authRequest = yield this._options.authProvider.getAuthRequest();
+            const _headers = mergeHeaders(_authRequest.headers, (_a = this._options) === null || _a === void 0 ? void 0 : _a.headers, requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.headers);
+            const _response = yield core.fetcher({
+                url: core.url.join((_c = (_b = (yield core.Supplier.get(this._options.baseUrl))) !== null && _b !== void 0 ? _b : (yield core.Supplier.get(this._options.environment))) !== null && _c !== void 0 ? _c : environments.InformlyEnvironment.Default, `contacts/${core.url.encodePathParam(id)}`),
+                method: "PUT",
+                headers: _headers,
+                contentType: "application/json",
+                queryParameters: requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.queryParams,
+                requestType: "json",
+                body: _body,
+                timeoutMs: ((_f = (_d = requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) !== null && _d !== void 0 ? _d : (_e = this._options) === null || _e === void 0 ? void 0 : _e.timeoutInSeconds) !== null && _f !== void 0 ? _f : 30) * 1000,
+                maxRetries: (_g = requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.maxRetries) !== null && _g !== void 0 ? _g : (_h = this._options) === null || _h === void 0 ? void 0 : _h.maxRetries,
+                abortSignal: requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.abortSignal,
+                fetchFn: (_j = this._options) === null || _j === void 0 ? void 0 : _j.fetch,
+                logging: this._options.logging,
+            });
+            if (_response.ok) {
+                return { data: _response.body, rawResponse: _response.rawResponse };
+            }
+            if (_response.error.reason === "status-code") {
+                switch (_response.error.statusCode) {
+                    case 400:
+                        throw new Informly.BadRequestError(_response.error.body, _response.rawResponse);
+                    case 401:
+                        throw new Informly.UnauthorizedError(_response.error.body, _response.rawResponse);
+                    case 404:
+                        throw new Informly.NotFoundError(_response.error.body, _response.rawResponse);
+                    default:
+                        throw new errors.InformlyError({
+                            statusCode: _response.error.statusCode,
+                            body: _response.error.body,
+                            rawResponse: _response.rawResponse,
+                        });
+                }
+            }
+            return handleNonStatusCodeError(_response.error, _response.rawResponse, "PUT", "/contacts/{id}");
+        });
+    }
+    /**
+     * @param {Informly.DeleteContactRequest} request
+     * @param {ContactsClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Informly.UnauthorizedError}
+     * @throws {@link Informly.NotFoundError}
+     *
+     * @example
+     *     await client.contacts.deleteContact({
+     *         id: "id"
+     *     })
+     */
+    deleteContact(request, requestOptions) {
+        return core.HttpResponsePromise.fromPromise(this.__deleteContact(request, requestOptions));
+    }
+    __deleteContact(request, requestOptions) {
+        return __awaiter(this, void 0, void 0, function* () {
+            var _a, _b, _c, _d, _e, _f, _g, _h, _j;
+            const { id } = request;
+            const _authRequest = yield this._options.authProvider.getAuthRequest();
+            const _headers = mergeHeaders(_authRequest.headers, (_a = this._options) === null || _a === void 0 ? void 0 : _a.headers, requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.headers);
+            const _response = yield core.fetcher({
+                url: core.url.join((_c = (_b = (yield core.Supplier.get(this._options.baseUrl))) !== null && _b !== void 0 ? _b : (yield core.Supplier.get(this._options.environment))) !== null && _c !== void 0 ? _c : environments.InformlyEnvironment.Default, `contacts/${core.url.encodePathParam(id)}`),
+                method: "DELETE",
+                headers: _headers,
+                queryParameters: requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.queryParams,
+                timeoutMs: ((_f = (_d = requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeoutInSeconds) !== null && _d !== void 0 ? _d : (_e = this._options) === null || _e === void 0 ? void 0 : _e.timeoutInSeconds) !== null && _f !== void 0 ? _f : 30) * 1000,
+                maxRetries: (_g = requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.maxRetries) !== null && _g !== void 0 ? _g : (_h = this._options) === null || _h === void 0 ? void 0 : _h.maxRetries,
+                abortSignal: requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.abortSignal,
+                fetchFn: (_j = this._options) === null || _j === void 0 ? void 0 : _j.fetch,
+                logging: this._options.logging,
+            });
+            if (_response.ok) {
+                return { data: _response.body, rawResponse: _response.rawResponse };
+            }
+            if (_response.error.reason === "status-code") {
+                switch (_response.error.statusCode) {
+                    case 401:
+                        throw new Informly.UnauthorizedError(_response.error.body, _response.rawResponse);
+                    case 404:
+                        throw new Informly.NotFoundError(_response.error.body, _response.rawResponse);
+                    default:
+                        throw new errors.InformlyError({
+                            statusCode: _response.error.statusCode,
+                            body: _response.error.body,
+                            rawResponse: _response.rawResponse,
+                        });
+                }
+            }
+            return handleNonStatusCodeError(_response.error, _response.rawResponse, "DELETE", "/contacts/{id}");
         });
     }
 }

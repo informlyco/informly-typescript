@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { ContactsClient } from "./api/resources/contacts/client/Client.mjs";
+import { SegmentsClient } from "./api/resources/segments/client/Client.mjs";
 import { normalizeClientOptionsWithAuth } from "./BaseClient.mjs";
 import * as core from "./core/index.mjs";
 export class InformlyClient {
@@ -18,6 +19,10 @@ export class InformlyClient {
     get contacts() {
         var _a;
         return ((_a = this._contacts) !== null && _a !== void 0 ? _a : (this._contacts = new ContactsClient(this._options)));
+    }
+    get segments() {
+        var _a;
+        return ((_a = this._segments) !== null && _a !== void 0 ? _a : (this._segments = new SegmentsClient(this._options)));
     }
     /**
      * Make a passthrough request using the SDK's configured auth, retry, logging, etc.

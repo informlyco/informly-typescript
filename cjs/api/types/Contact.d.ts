@@ -3,9 +3,11 @@ export interface Contact {
     id: string;
     /** Email address of the contact */
     email: string | null;
-    /** Phone number of the contact */
+    /** Phone number in E.164 format */
     phone: string | null;
     contact: Contact.Contact;
+    /** Segments assigned to this contact */
+    segments?: Contact.Segments.Item[] | undefined;
     /** ID of the organization this contact belongs to */
     organizationId: string;
     /** Timestamp when the contact was created */
@@ -23,5 +25,14 @@ export declare namespace Contact {
         jobtitle?: string | undefined;
         /** Company or organization name */
         company?: string | undefined;
+    }
+    type Segments = Segments.Item[];
+    namespace Segments {
+        interface Item {
+            /** Segment identifier */
+            segmentId: string;
+            /** When the segment was assigned */
+            assignedAt: string;
+        }
     }
 }

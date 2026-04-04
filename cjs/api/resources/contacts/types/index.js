@@ -15,5 +15,8 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./CreateContactResponse.js"), exports);
+__exportStar(require("./DeleteContactResponse.js"), exports);
+__exportStar(require("./DeleteContactsResponse.js"), exports);
 __exportStar(require("./GetContactResponse.js"), exports);
 __exportStar(require("./ListContactsResponse.js"), exports);
+__exportStar(require("./UpdateContactResponse.js"), exports);

@@ -36,7 +36,9 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.contacts = void 0;
+exports.segments = exports.contacts = void 0;
 __exportStar(require("./contacts/client/requests/index.js"), exports);
 exports.contacts = __importStar(require("./contacts/index.js"));
 __exportStar(require("./contacts/types/index.js"), exports);
+exports.segments = __importStar(require("./segments/index.js"));
+__exportStar(require("./segments/types/index.js"), exports);

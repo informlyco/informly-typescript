@@ -4,10 +4,13 @@
   "description": "Official Informly API client for TypeScript/JavaScript",
   "author": "Informly",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/informlyco/informly-typescript"
-  },
+  "keywords": [
+    "informly",
+    "api",
+    "sdk",
+    "rest",
+    "typescript"
+  ],
   "type": "commonjs",
   "main": "./cjs/index.js",
   "module": "./esm/index.mjs",

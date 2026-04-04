@@ -45,6 +45,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InformlyClient = void 0;
 const Client_js_1 = require("./api/resources/contacts/client/Client.js");
+const Client_js_2 = require("./api/resources/segments/client/Client.js");
 const BaseClient_js_1 = require("./BaseClient.js");
 const core = __importStar(require("./core/index.js"));
 class InformlyClient {
@@ -54,6 +55,10 @@ class InformlyClient {
     get contacts() {
         var _a;
         return ((_a = this._contacts) !== null && _a !== void 0 ? _a : (this._contacts = new Client_js_1.ContactsClient(this._options)));
+    }
+    get segments() {
+        var _a;
+        return ((_a = this._segments) !== null && _a !== void 0 ? _a : (this._segments = new Client_js_2.SegmentsClient(this._options)));
     }
     /**
      * Make a passthrough request using the SDK's configured auth, retry, logging, etc.
