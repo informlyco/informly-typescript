@@ -18,6 +18,9 @@ jobs:
         with:
           node-version: 22.14
           registry-url: 'https://registry.npmjs.org'
+          
+      - name: Upgrade npm for trusted publishing
+        run: npm install -g npm@latest
 
       - name: Check if version already published
         if: github.event_name != 'workflow_dispatch'
